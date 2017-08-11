@@ -13,7 +13,7 @@ mvnw
 ```
 
 Angular
-``
+```
 cd client
 yarn && yarn start
 ```
