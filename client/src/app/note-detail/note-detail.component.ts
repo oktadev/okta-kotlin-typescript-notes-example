@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { isNumber } from 'util';
 import { NoteService } from '../shared/note/note.service';
 import { NgForm } from '@angular/forms';
+import { MdInputDirective } from '@angular/material';
 
 @Component({
   selector: 'app-note-detail',
   templateUrl: './note-detail.component.html',
   styleUrls: ['./note-detail.component.css']
 })
-export class NoteDetailComponent implements OnInit {
+export class NoteDetailComponent implements OnInit, AfterViewInit {
   note: any = {text: ''};
+  @ViewChild(MdInputDirective) text: MdInputDirective;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -26,6 +27,12 @@ export class NoteDetailComponent implements OnInit {
         }, error => console.error(error));
       }
     });
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.text.focus();
+    }, 150);
   }
 
   onSubmit(form: NgForm) {

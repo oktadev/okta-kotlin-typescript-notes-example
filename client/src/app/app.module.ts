@@ -1,22 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ChangeDetectorRef, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NoteListComponent } from './note-list/note-list.component';
 import { NoteService } from './shared/note/note.service';
-import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-import { OktaAuthService, OktaAuthGuard, OktaAuthInterceptor } from './shared/okta';
+import { OktaAuthGuard, OktaAuthInterceptor, OktaAuthService } from './shared/okta';
 import {
-  MdButtonModule, MdCardModule, MdIconModule, MdInputModule, MdListModule,
+  MdButtonModule,
+  MdCardModule,
+  MdIconModule,
+  MdInputModule,
+  MdListModule,
   MdToolbarModule
 } from '@angular/material';
 import { NoteDetailComponent } from './note-detail/note-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
+  {path: 'login', component: LoginComponent},
   {path: 'notes', component: NoteListComponent, canActivate: [OktaAuthGuard]},
   {path: 'notes/:id', component: NoteDetailComponent, canActivate: [OktaAuthGuard]},
   {path: '', redirectTo: '/notes', pathMatch: 'full'}
@@ -26,7 +31,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     NoteListComponent,
-    NoteDetailComponent
+    NoteDetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

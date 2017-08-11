@@ -30,7 +30,7 @@ import javax.persistence.Id
 class NotesApplication {
 
     @Bean
-    open fun simpleCorsFilter(): FilterRegistrationBean<CorsFilter> {
+    open fun simpleCorsFilter(): FilterRegistrationBean {
         val source = UrlBasedCorsConfigurationSource()
         val config = CorsConfiguration()
         config.allowCredentials = true
@@ -87,7 +87,7 @@ class HomeController(val repository: NotesRepository) {
 
     @GetMapping("/")
     fun home(principal: Principal): List<Note> {
-        println("Fetching notes for user: ${principal.name}")
+        //println("Fetching notes for user: ${principal.name}")
         val notes = repository.findAllByUser(principal.name)
         if (notes.isEmpty()) {
             return listOf()

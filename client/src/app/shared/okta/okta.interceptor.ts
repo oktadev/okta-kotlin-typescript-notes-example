@@ -31,11 +31,11 @@ export class OktaAuthInterceptor implements HttpInterceptor {
       if (event instanceof HttpResponse) {
         return event;
       }
-    }).catch(err => {
-      if (err instanceof HttpErrorResponse) {
-        if (err.status === 401) {
-          this.router.navigateByUrl('/');
-          return Observable.throw(err);
+    }).catch(error => {
+      if (error instanceof HttpErrorResponse) {
+        if (error.status === 401) {
+          this.router.navigate(['login']);
+          return Observable.create(error);
         }
       }
     });

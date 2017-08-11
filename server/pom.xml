@@ -9,12 +9,12 @@
 	<packaging>jar</packaging>
 
 	<name>notes</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Notes Server with Kotlin and Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.M2</version>
+		<version>1.5.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -24,7 +24,6 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<kotlin.version>1.1.3-2</kotlin.version>
-        <spring-security.version>5.0.0.M3</spring-security.version>
 	</properties>
 
 	<dependencies>
@@ -96,18 +95,7 @@
 				<enabled>true</enabled>
 			</snapshots>
 		</repository>
-        <repository>
-            <id>spring-milestones</id>
-            <url>http://repo.spring.io/milestone/</url>
-        </repository>
 	</repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-milestones</id>
-            <url>http://repo.spring.io/milestone/</url>
-        </pluginRepository>
-    </pluginRepositories>
 
 	<build>
         <defaultGoal>spring-boot:run</defaultGoal>

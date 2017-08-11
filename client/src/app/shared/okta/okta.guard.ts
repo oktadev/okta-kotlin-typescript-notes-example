@@ -1,5 +1,5 @@
-import { ApplicationRef, Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from '@angular/router';
 import { OktaAuthService } from './okta.service';
 
 @Injectable()
@@ -16,7 +16,6 @@ export class OktaAuthGuard implements CanActivate {
     if (this.authenticated) {
       return true;
     }
-    // Show login
     this.signIn.login();
     return false;
   }

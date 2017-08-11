@@ -1,7 +1,8 @@
-import { ApplicationRef, Injectable } from '@angular/core';
+import { ChangeDetectorRef, Injectable } from '@angular/core';
 import * as OktaSignIn from '@okta/okta-signin-widget/dist/js/okta-sign-in.min.js'
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class OktaAuthService {
@@ -17,10 +18,10 @@ export class OktaAuthService {
     }
   });
 
+  private userSource: ReplaySubject<any>;
   public user$: Observable<any>;
-  public userSource: ReplaySubject<any>;
 
-  constructor() {
+  constructor(private router: Router) {
     this.userSource = new ReplaySubject<any>(1);
     this.user$ = this.userSource.asObservable();
   }
@@ -30,25 +31,36 @@ export class OktaAuthService {
     return !!this.signIn.tokenManager.get('accessToken');
   }
 
-  login() {
-    // Launches the widget and stores the tokens.
-    this.signIn.renderEl({el: '#okta-signin-container'}, response => {
-      if (response.status === 'SUCCESS') {
-        response.forEach(token => {
-          if (token.idToken) {
-            this.signIn.tokenManager.add('idToken', token);
-          }
-          if (token.accessToken) {
-            this.signIn.tokenManager.add('accessToken', token);
-          }
+  login(next?: string) {
+    if (next) {
+      this.router.navigate(['login', {next: next}]);
+    } else {
+      this.router.navigate(['login']);
+    }
+  }
+
+  showLogin() {
+    // Launches the widget and stores the tokens
+    try {
+      this.signIn.renderEl({el: '#okta-signin-container'}, response => {
+        if (response.status === 'SUCCESS') {
+          response.forEach(token => {
+            if (token.idToken) {
+              this.signIn.tokenManager.add('idToken', token);
+            }
+            if (token.accessToken) {
+              this.signIn.tokenManager.add('accessToken', token);
+            }
+          });
+          this.userSource.next(this.idTokenAsUser);
           this.signIn.hide();
-        });
-        console.log('call 1');
-        this.userSource.next(this.idTokenAsUser);
-      } else {
-        console.error(response);
-      }
-    });
+        } else {
+          console.error(response);
+        }
+      });
+    } catch (exception)  {
+      // An instance of the widget has already been rendered. Call remove() first.
+    }
   }
 
   get idTokenAsUser() {
@@ -66,5 +78,6 @@ export class OktaAuthService {
     await this.signIn.signOut();
     this.signIn.remove();
     this.userSource.next(undefined);
+    this.login();
   }
 }

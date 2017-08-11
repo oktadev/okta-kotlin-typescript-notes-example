@@ -1,6 +1,5 @@
-import { ChangeDetectorRef, Component, ComponentRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from './shared/okta/okta.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'My Notes';
   user;
 
-  constructor(public oktaService: OktaAuthService, private router: Router) {
+  constructor(public oktaService: OktaAuthService) {
   }
 
   ngOnInit() {
@@ -21,13 +20,6 @@ export class AppComponent implements OnInit {
 
     this.oktaService.user$.subscribe(user => {
       this.user = user;
-      if (user) {
-        this.router.navigate(['/notes']);
-      } else {
-        // todo: figure out how to logout router
-        // this.router.navigate(['/']);
-        window.location.reload();
-      }
     });
   }
 }

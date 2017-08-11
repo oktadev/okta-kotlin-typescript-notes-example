@@ -7,8 +7,4 @@
   </span>
 </md-toolbar>
 
-<div>
-  <div id="okta-signin-container"></div>
-
-  <router-outlet></router-outlet>
-</div>
+<router-outlet [hidden]="!user"></router-outlet>

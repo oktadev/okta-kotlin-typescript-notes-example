@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NoteService } from '../shared/note/note.service';
 import { OktaAuthService } from '../shared/okta/okta.service';
 import { Router } from '@angular/router';
