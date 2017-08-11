@@ -6,13 +6,13 @@ It *mostly* works, except for logout where a `window.location.reload()` seems to
 
 To run this app, run the commands below in separate terminal windows:
 
-Spring Boot:
+**Spring Boot**
 ```
 cd server
 mvnw
 ```
 
-Angular
+**Angular**
 ```
 cd client
 yarn && yarn start
