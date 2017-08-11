@@ -8,12 +8,11 @@ import {
 import { Observable } from 'rxjs/Observable';
 import { OktaAuthService } from './okta.service';
 import 'rxjs/add/operator/map';
-import { Router } from '@angular/router';
 
 @Injectable()
 export class OktaAuthInterceptor implements HttpInterceptor {
 
-  constructor(private oktaService: OktaAuthService, private router: Router) {
+  constructor(private oktaService: OktaAuthService) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -34,7 +33,7 @@ export class OktaAuthInterceptor implements HttpInterceptor {
     }).catch(error => {
       if (error instanceof HttpErrorResponse) {
         if (error.status === 401) {
-          this.router.navigate(['login']);
+          this.oktaService.login();
           return Observable.create(error);
         }
       }

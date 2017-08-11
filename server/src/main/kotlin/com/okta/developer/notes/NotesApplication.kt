@@ -12,10 +12,8 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.rest.core.annotation.HandleBeforeCreate
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler
 import org.springframework.data.rest.core.annotation.RepositoryRestResource
-import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Component
-import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.cors.CorsConfiguration
@@ -87,7 +85,7 @@ class HomeController(val repository: NotesRepository) {
 
     @GetMapping("/")
     fun home(principal: Principal): List<Note> {
-        //println("Fetching notes for user: ${principal.name}")
+        println("Fetching notes for user: ${principal.name}")
         val notes = repository.findAllByUser(principal.name)
         if (notes.isEmpty()) {
             return listOf()

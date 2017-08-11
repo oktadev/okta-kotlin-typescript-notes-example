@@ -6,7 +6,7 @@
                     [routerLink]="['/notes', note.id]">
         {{note.text}}
       </md-list-item>
-      <md-list-item *ngIf="notes?.length === 0">
+      <md-list-item *ngIf="!notes || notes?.length === 0">
         <p>No notes found.</p>
       </md-list-item>
     </md-list>

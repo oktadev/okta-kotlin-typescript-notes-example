@@ -7,7 +7,7 @@ import { NoteService } from '../shared/note/note.service';
   styleUrls: ['./note-list.component.css']
 })
 export class NoteListComponent implements OnInit {
-  private notes: Array<any>;
+  notes: Array<any>;
 
   constructor(private noteService: NoteService) {
   }
@@ -17,5 +17,4 @@ export class NoteListComponent implements OnInit {
       this.notes = data;
     }, error => console.error(error));
   }
-
 }

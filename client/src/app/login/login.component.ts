@@ -1,7 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OktaAuthService } from '../shared/okta/okta.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NoteListComponent } from '../note-list/note-list.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,21 +9,20 @@ import { NoteListComponent } from '../note-list/note-list.component';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private oktaService: OktaAuthService, private route: ActivatedRoute,
-              private router: Router) { }
+  constructor(private oktaService: OktaAuthService,
+              private router: Router) {
+  }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      if (this.oktaService.isAuthenticated()) {
-        this.router.navigate(['/']);
-      } else {
-        this.oktaService.showLogin();
-      }
-    });
+    if (this.oktaService.isAuthenticated()) {
+      this.router.navigate(['/']);
+    } else {
+      this.oktaService.showLogin();
+    }
 
+    // user authentication listener
     this.oktaService.user$.subscribe(user => {
       this.router.navigate(['/']);
     });
   }
-
 }

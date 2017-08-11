@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import * as OktaSignIn from '@okta/okta-signin-widget/dist/js/okta-sign-in.min.js'
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Observable } from 'rxjs/Observable';
@@ -9,10 +9,10 @@ export class OktaAuthService {
 
   signIn = new OktaSignIn({
     baseUrl: 'https://dev-158606.oktapreview.com',
-    clientId: 'MjlYvTtFW26gOoOAHKOz',
+    clientId: '0oabl213xlbMjGJYo0h7',
     redirectUri: 'http://localhost:4200',
     authParams: {
-      issuer: 'https://dev-158606.oktapreview.com/oauth2/ausbd6ea4fndaUChb0h7',
+      issuer: 'https://dev-158606.oktapreview.com/oauth2/ausbl5n1nvDl1Tz6p0h7',
       responseType: ['id_token', 'token'],
       scopes: ['openid', 'email', 'profile']
     }
