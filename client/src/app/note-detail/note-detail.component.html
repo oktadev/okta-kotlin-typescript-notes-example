@@ -1,0 +1,25 @@
+<form #editForm="ngForm" (ngSubmit)="onSubmit(editForm.value)">
+  <input type="hidden" name="href" [(ngModel)]="note.href">
+  <md-card>
+    <md-card-title>
+      {{note?.id ? 'Edit Note' : 'Add Note'}}
+    </md-card-title>
+    <md-card-content>
+      <md-input-container>
+          <textarea mdInput placeholder="Note" class="full-width" rows="5" name="text"
+                    required #text="ngModel" [(ngModel)]="note.text"></textarea>
+      </md-input-container>
+      <div [hidden]="text.valid || text.pristine">
+        Name is required
+      </div>
+    </md-card-content>
+    <md-card-actions>
+      <button md-raised-button color="primary"
+              [disabled]="!editForm.form.valid">Save
+      </button>
+      <button md-button color="warn" *ngIf="note?.href"
+              (click)="remove(note.href)">Delete</button>
+      <a md-button routerLink="/notes">Cancel</a>
+    </md-card-actions>
+  </md-card>
+</form>

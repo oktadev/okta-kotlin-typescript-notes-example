@@ -1,0 +1,13 @@
+:host {
+  padding-left: 5px;
+  display: block;
+}
+
+.btn-add {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.link {
+  cursor: pointer;
+}

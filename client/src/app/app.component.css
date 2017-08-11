@@ -1,0 +1,8 @@
+md-toolbar a {
+  color: rgba(255, 255, 255, .87);
+  text-decoration: none;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
