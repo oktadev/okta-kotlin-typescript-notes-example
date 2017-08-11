@@ -2,11 +2,11 @@
   <input type="hidden" name="href" [(ngModel)]="note.href">
   <md-card>
     <md-card-title>
-      {{note?.id ? 'Edit Note' : 'Add Note'}}
+      {{note?.href ? 'Edit Note' : 'Add Note'}}
     </md-card-title>
     <md-card-content>
       <md-input-container>
-          <textarea mdInput placeholder="Note" class="full-width" rows="5" name="text"
+          <textarea mdInput placeholder="Note" cols="50" rows="5" name="text"
                     required #text="ngModel" [(ngModel)]="note.text"></textarea>
       </md-input-container>
       <div [hidden]="text.valid || text.pristine">
