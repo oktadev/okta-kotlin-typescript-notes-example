@@ -15,6 +15,8 @@ sed -i -e "s|http://localhost:8080|https://notes-by-kotlin.cfapps.io|g" $start/c
 sed -i -e "s|http://localhost:4200|https://notes-with-typescript.cfapps.io|g" $start/client/src/app/shared/okta/okta.service.ts
 yarn && ng build -prod --aot
 touch dist/Staticfile
+# enable pushstate so no 404s on refresh
+echo 'pushstate: enabled' > dist/Staticfile
 
 cd $start
 cf push
