@@ -2,6 +2,8 @@
 
 Uses Spring Boot on the backend with the Okta Spring Security Starter. Uses the Okta Sign-In Widget on the front end. 
 
+[Build a Secure Notes Application with Kotlin, TypeScript, and Okta](https://scotch.io/tutorials/build-a-secure-notes-application-with-kotlin-typescript-and-okta) shows how this application was built.
+
 To run this app, run the commands below in separate terminal windows:
 
 **Spring Boot**
