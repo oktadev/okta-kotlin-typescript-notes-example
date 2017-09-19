@@ -12,7 +12,7 @@ export class OktaAuthService {
     clientId: '0oabl213xlbMjGJYo0h7',
     redirectUri: 'http://localhost:4200',
     authParams: {
-      issuer: 'https://dev-158606.oktapreview.com/oauth2/ausbl5n1nvDl1Tz6p0h7',
+      issuer: 'https://dev-158606.oktapreview.com/oauth2/default',
       responseType: ['id_token', 'token'],
       scopes: ['openid', 'email', 'profile']
     }

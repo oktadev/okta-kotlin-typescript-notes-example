@@ -28,7 +28,7 @@ import javax.persistence.Id
 class NotesApplication {
 
     @Bean
-    open fun simpleCorsFilter(): FilterRegistrationBean {
+    fun simpleCorsFilter(): FilterRegistrationBean {
         val source = UrlBasedCorsConfigurationSource()
         val config = CorsConfiguration()
         config.allowCredentials = true
