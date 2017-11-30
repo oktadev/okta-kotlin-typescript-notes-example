@@ -1,4 +1,4 @@
-md-toolbar a {
+mat-toolbar a {
   color: rgba(255, 255, 255, .87);
   text-decoration: none;
 }
