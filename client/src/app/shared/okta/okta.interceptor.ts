@@ -34,7 +34,7 @@ export class OktaAuthInterceptor implements HttpInterceptor {
       if (error instanceof HttpErrorResponse) {
         if (error.status === 401) {
           this.oktaService.login();
-          return Observable.create(error);
+          return Observable.throw(error);
         }
       }
     });

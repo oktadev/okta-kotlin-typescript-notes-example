@@ -22,7 +22,7 @@ export class NoteService {
   }
 
   save(note: any): Observable<any> {
-    let result: Observable<Response>;
+    let result: Observable<Object>;
     if (note['href']) {
       result = this.http.put(note.href, note);
     } else {

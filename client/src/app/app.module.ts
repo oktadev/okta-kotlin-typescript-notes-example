@@ -7,12 +7,12 @@ import { NoteService } from './shared/note/note.service';
 import { RouterModule, Routes } from '@angular/router';
 import { OktaAuthGuard, OktaAuthInterceptor, OktaAuthService } from './shared/okta';
 import {
-  MdButtonModule,
-  MdCardModule,
-  MdIconModule,
-  MdInputModule,
-  MdListModule,
-  MdToolbarModule
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatToolbarModule
 } from '@angular/material';
 import { NoteDetailComponent } from './note-detail/note-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -39,12 +39,12 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    MdToolbarModule,
-    MdListModule,
-    MdCardModule,
-    MdButtonModule,
-    MdIconModule,
-    MdInputModule,
+    MatToolbarModule,
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
     FormsModule
   ],
   providers: [NoteService, OktaAuthService, OktaAuthGuard, {
