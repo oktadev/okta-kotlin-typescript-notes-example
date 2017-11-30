@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NoteService } from '../shared/note/note.service';
 import { NgForm } from '@angular/forms';
-import { MdInputDirective } from '@angular/material';
+import { MatInput } from '@angular/material';
 
 @Component({
   selector: 'app-note-detail',
@@ -11,7 +11,7 @@ import { MdInputDirective } from '@angular/material';
 })
 export class NoteDetailComponent implements OnInit, AfterViewInit {
   note: any = {text: ''};
-  @ViewChild(MdInputDirective) text: MdInputDirective;
+  @ViewChild(MatInput) text: MatInput;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

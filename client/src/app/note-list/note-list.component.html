@@ -1,17 +1,17 @@
-<md-card>
-  <md-card-title>Notes List</md-card-title>
-  <md-card-content>
-    <md-list>
-      <md-list-item *ngFor="let note of notes" class="link"
+<mat-card>
+  <mat-card-title>Notes List</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let note of notes" class="link"
                     [routerLink]="['/notes', note.id]">
         {{note.text}}
-      </md-list-item>
-      <md-list-item *ngIf="!notes || notes?.length === 0">
+      </mat-list-item>
+      <mat-list-item *ngIf="!notes || notes?.length === 0">
         <p>No notes found.</p>
-      </md-list-item>
-    </md-list>
-    <button md-fab color="accent" class="btn-add" routerLink="add">
-      <md-icon>add circle</md-icon>
+      </mat-list-item>
+    </mat-list>
+    <button mat-fab color="accent" class="btn-add" routerLink="add">
+      <mat-icon>add circle</mat-icon>
     </button>
-  </md-card-content>
-</md-card>
+  </mat-card-content>
+</mat-card>

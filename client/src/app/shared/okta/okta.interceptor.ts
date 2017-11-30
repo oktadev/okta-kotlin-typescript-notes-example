@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { OktaAuthService } from './okta.service';
-import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
 @Injectable()
 export class OktaAuthInterceptor implements HttpInterceptor {
@@ -26,15 +26,12 @@ export class OktaAuthInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(request).map((event: HttpEvent<any>) => {
+    return next.handle(request).do((event: HttpEvent<any>) => {
       if (event instanceof HttpResponse) {
         return event;
-      }
-    }).catch(error => {
-      if (error instanceof HttpErrorResponse) {
-        if (error.status === 401) {
+      } else if (event instanceof HttpErrorResponse) {
+        if (event.status === 401) {
           this.oktaService.login();
-          return Observable.create(error);
         }
       }
     });
