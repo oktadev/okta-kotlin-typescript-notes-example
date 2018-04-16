@@ -18,7 +18,7 @@ Please read [Build a Secure Notes Application with Kotlin, TypeScript, and Okta]
 To install this example application, run the following commands:
 
 ```bash
-git clone git@github.com:oktadeveloper/okta-kotlin-typescript-notes-example.git
+git clone https://github.com/oktadeveloper/okta-kotlin-typescript-notes-example.git
 cd okta-kotlin-typescript-notes-example
 ```
 
